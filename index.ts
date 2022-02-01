@@ -1,25 +1,9 @@
+import Game from "./modules/game.js";
+
 const WORD_INPUT_ID = "word-input";
 const SUBMIT_BUTTON_ID = "form-submit-btn";
-const WORDS = [
-	"APPLE",
-	"GREEN",
-	"BAGLE",
-	"PHONE",
-	"DODGE",
-	"CLIFF",
-	"MOUNT",
-	"SUGAR",
-	"PROXY",
-	"TROVE",
-	"KNOLL",
-	"BOXES",
-	"PIANO",
-	"QUERY",
-	"TACOS",
-	"VIDEO"
-];
 
-let targetWord = "PIANO";
+let game = new Game(5, 6);
 
 interface ElementMap {
 	"word-input"?: HTMLInputElement;
@@ -63,24 +47,7 @@ function processTurn(elementMap: ElementMap) {
 	const wordInput = elementMap[WORD_INPUT_ID];
 	const enteredWord = wordInput.value;
 
-	console.log("Entered Word: ", enteredWord);
-	console.log("Target Word: ", targetWord);
-
-	const letters = [];
-	const enteredLen = enteredWord.length;
-	for (let i = 0; i < enteredLen; i++) {
-		let result;
-		if (enteredWord[i] === targetWord[i]) {
-			result = "MATCH";
-		} else if (targetWord.indexOf(enteredWord[i]) !== -1) {
-			result = "WRONG_LOC";
-		} else {
-			result = "INVALID";
-		}
-		letters.push({ letter: enteredWord[i], status: result });
-	}
-
-	console.log("Results: ", letters);
+	game.guess(enteredWord);
 
 	// Clean up
 	wordInput.value = "";
