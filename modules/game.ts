@@ -1,5 +1,5 @@
 import { getRandomWord, isWordInList } from "./words.js";
-import { GameState, Result } from "../types.js";
+import { GuessResult, GuessOutcomeState, LetterResult } from "../types.js";
 
 export default class Game {
 	targetWord;
@@ -12,30 +12,42 @@ export default class Game {
 		console.log("Target Word Is: ", this.targetWord);
 	}
 
-	public guess(word: string) {
+	public guess(word: string): GuessResult {
 		if (word.length !== this.targetWord.length) {
-			return "The word lengths are mismatched";
+			return {
+				status: "mismatched_length",
+				results: undefined
+			};
 		}
 		if (!isWordInList(word)) {
-			return "Word not in list!";
+			return {
+				status: "not_in_list",
+				results: undefined
+			};
 		}
 		this.numAttempts++;
 
 		const results = this.compareGuessToTarget(word);
-
-		console.log("Results: ", results);
-
 		const state = this.calcGameState(results);
 		if (state === "win") {
-			console.log("You Win!");
+			return {
+				status: "win",
+				results: results
+			};
 		} else if (state === "loss") {
-			console.log("You Lose!");
+			return {
+				status: "loss",
+				results: results
+			};
 		} else {
-			console.log("Keep Guessing!");
+			return {
+				status: "continue",
+				results: results
+			};
 		}
 	}
 
-	private compareGuessToTarget(guess: string): Array<Result> {
+	private compareGuessToTarget(guess: string): Array<LetterResult> {
 		const results = [];
 		const guessLen = guess.length;
 		for (let i = 0; i < guessLen; i++) {
@@ -52,7 +64,7 @@ export default class Game {
 		return results;
 	}
 
-	private calcGameState(results: Array<Result>): GameState {
+	private calcGameState(results: Array<LetterResult>): GuessOutcomeState {
 		let numCorrect = 0;
 		let numResults = results.length;
 		for (let i = 0; i < numResults; i++) {
@@ -64,7 +76,7 @@ export default class Game {
 		} else if (this.numAttempts >= this.maxAttempts) {
 			return "loss";
 		} else {
-			return "in_progress";
+			return "continue";
 		}
 	}
 }

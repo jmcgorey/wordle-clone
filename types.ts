@@ -1,6 +1,16 @@
-export interface Result {
+export interface LetterResult {
 	letter: string;
 	status: "correct" | "match" | "wrong"; // Wordle uses "correct", "present", and "absent"
 }
 
-export type GameState = "win" | "loss" | "in_progress";
+export interface GuessResult {
+	status: GuessOutcomeState;
+	results: Array<LetterResult>;
+}
+
+export type GuessOutcomeState =
+	| "win"
+	| "loss"
+	| "continue"
+	| "mismatched_length"
+	| "not_in_list";
