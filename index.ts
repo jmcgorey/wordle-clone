@@ -1,4 +1,5 @@
 import Game from "./modules/game.js";
+import { LetterResult } from "./types.js";
 
 const WORD_INPUT_ID = "word-input";
 const SUBMIT_BUTTON_ID = "form-submit-btn";
@@ -47,11 +48,34 @@ function processTurn(elementMap: ElementMap) {
 	const wordInput = elementMap[WORD_INPUT_ID];
 	const enteredWord = wordInput.value;
 
-	game.guess(enteredWord);
+	const attemptNumber = game.getAttemptNumber();
+	const r = game.guess(enteredWord);
+	const results = r.results;
 
-	// Clean up
+	// Update the Table
+	if (Array.isArray(results) && results.length > 0) {
+		updateTable(results, attemptNumber);
+	}
+
+	// TODO Update (eventual) keyboard/letter tracking state
+
+	// Reset word entry state
 	wordInput.value = "";
 	enableSubmitButton(false);
+}
+
+function updateTable(results: Array<LetterResult>, attemptNumber: number) {
+	const numResults = results.length;
+	for (let i = 0; i < numResults; i++) {
+		const result = results[i];
+		const selector = `[id="r${attemptNumber}-c${i}"]`;
+		const cell = document.querySelector(selector) as HTMLTableCellElement;
+		console.log("Selector: ", selector);
+		console.log("Cell: ", cell);
+		cell.dataset.letter = result.letter;
+		cell.innerText = result.letter;
+		cell.dataset.status = result.status;
+	}
 }
 
 function enableSubmitButton(disabled: boolean) {

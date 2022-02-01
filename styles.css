@@ -12,6 +12,21 @@
 	flex: 1;
 }
 
+td[data-status="correct"] {
+	background-color: green;
+	color: white;
+}
+
+td[data-status="match"] {
+	background-color: yellow;
+	color: black;
+}
+
+td[data-status="wrong"] {
+	background-color: darkslategray;
+	color: white;
+}
+
 button[type="submit"] {
 	padding: 0.5em;
 	background-color: #99bb88;
