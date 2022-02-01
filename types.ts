@@ -13,4 +13,5 @@ export type GuessOutcomeState =
 	| "loss"
 	| "continue"
 	| "mismatched_length"
-	| "not_in_list";
+	| "not_in_list"
+	| "game_over";
