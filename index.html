@@ -19,50 +19,7 @@
 			}
 		</style>
 		<div id="game-board">
-			<table>
-				<tr id="r0">
-					<td id="r0-c0"></td>
-					<td id="r0-c1"></td>
-					<td id="r0-c2"></td>
-					<td id="r0-c3"></td>
-					<td id="r0-c4"></td>
-				</tr>
-				<tr id="r1">
-					<td id="r1-c0"></td>
-					<td id="r1-c1"></td>
-					<td id="r1-c2"></td>
-					<td id="r1-c3"></td>
-					<td id="r1-c4"></td>
-				</tr>
-				<tr id="r2">
-					<td id="r2-c0"></td>
-					<td id="r2-c1"></td>
-					<td id="r2-c2"></td>
-					<td id="r2-c3"></td>
-					<td id="r2-c4"></td>
-				</tr>
-				<tr id="r0">
-					<td id="r3-c0"></td>
-					<td id="r3-c1"></td>
-					<td id="r3-c2"></td>
-					<td id="r3-c3"></td>
-					<td id="r3-c4"></td>
-				</tr>
-				<tr id="r0">
-					<td id="r4-c0"></td>
-					<td id="r4-c1"></td>
-					<td id="r4-c2"></td>
-					<td id="r4-c3"></td>
-					<td id="r4-c4"></td>
-				</tr>
-				<tr id="r0">
-					<td id="r5-c0"></td>
-					<td id="r5-c1"></td>
-					<td id="r5-c2"></td>
-					<td id="r5-c3"></td>
-					<td id="r5-c4"></td>
-				</tr>
-			</table>
+			<!-- Table inserted on setup -->
 		</div>
 		<div class="game-input">
 			<form id="game-input-form">
@@ -73,10 +30,8 @@
 							id="word-input"
 							name="word-input"
 							type="text"
-							placeholder="Enter a 5-letter word"
-							pattern="[A-Z]{5}"
-							maxlength="5"
 							autofocus
+							autocomplete="none"
 						/>
 					</div>
 					<div class="submit-button-wrapper">

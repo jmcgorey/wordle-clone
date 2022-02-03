@@ -10,18 +10,22 @@ export default class Game {
 	/* --------------------------------------------------------
 	 * Properties
 	 * -------------------------------------------------------- */
-	public getAttemptNumber() {
+	public getAttemptNumber(): number {
 		return this.numAttempts;
 	}
 
-	public getMaxAttempts() {
+	public getMaxAttempts(): number {
 		return this.maxAttempts;
+	}
+
+	public getWordLength(): number {
+		return this.targetWord.length;
 	}
 
 	/* --------------------------------------------------------
 	 * Constructor(s)
 	 * -------------------------------------------------------- */
-	constructor(numLetters: number, maxAttempts?: number) {
+	constructor(numLetters?: number, maxAttempts?: number) {
 		// Generate the Word
 		this.targetWord = getRandomWord(numLetters);
 
@@ -43,6 +47,7 @@ export default class Game {
 	 * 			and a string containing the game state
 	 */
 	public guess(word: string): GuessResult {
+		word = word.toUpperCase();
 		if (this.isGameOver) {
 			return {
 				status: "game_over",

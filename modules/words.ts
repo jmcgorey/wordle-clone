@@ -1,4 +1,6 @@
 const WORDS = [
+	"A",
+	"I",
 	"APPLE",
 	"GREEN",
 	"BAGLE",
@@ -14,7 +16,11 @@ const WORDS = [
 	"PIANO",
 	"QUERY",
 	"TACOS",
-	"VIDEO"
+	"VIDEO",
+	'TURKEY',
+	'MEGHAN',
+	'BREAKS',
+	'SECOND'
 ];
 
 export function getRandomWord(numLetters?: number) {
