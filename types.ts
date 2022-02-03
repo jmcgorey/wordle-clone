@@ -1,3 +1,8 @@
+export interface ElementMap {
+	"word-input"?: HTMLInputElement;
+	"form-submit-btn"?: HTMLButtonElement;
+}
+
 export interface LetterResult {
 	letter: string;
 	status: "correct" | "match" | "wrong"; // Wordle uses "correct", "present", and "absent"
