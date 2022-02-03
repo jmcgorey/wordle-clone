@@ -99,12 +99,12 @@ function processTurn(elementMap: ElementMap) {
 	// Check for word not in the word list case
 	if (r.status === 'not_in_list') {
 		const message = `"${enteredWord}" is not in the word list.`;
-		notifyUser(message);
+		notifyUser(message, 'warning');
 	}
 	// Check for mismatched length
 	if (r.status === 'mismatched_length') {
 		const message = `"${enteredWord}" is not the same length as the target word.`;
-		notifyUser(message);
+		notifyUser(message, 'error');
 	}
 
 	// Check for game over
@@ -166,7 +166,7 @@ function notifyUser(message: string, variant?: string): void {
 			<span>${message}</span>
 		</div>
 	`;
-
+	
 	const timeout = setTimeout(() => {
 		console.log('Removing toast');
 		toastContainer.innerHTML = '';

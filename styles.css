@@ -12,6 +12,37 @@
 	flex: 1;
 }
 
+.toast {
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.toast.toast-info {
+	background-color: #e2e2e2;
+	color: black;
+}
+
+.toast.toast-warning {
+	background-color: #f0f884;
+	color: black;
+}
+
+.toast.toast-error {
+	background-color: #fd3838;
+	color: white;
+}
+
+input:invalid {
+	border: 1px solid red;
+}
+
+td {
+	border: 1px solid black;
+	padding: 1em;
+}
+
 td[data-status="correct"] {
 	background-color: green;
 	color: white;
